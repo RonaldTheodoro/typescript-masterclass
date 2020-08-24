@@ -12,5 +12,6 @@
       "dom",
       "es6"
     ],
+    "noImplicitThis": true
   }
 }
