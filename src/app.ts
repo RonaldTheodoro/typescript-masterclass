@@ -1,25 +1,18 @@
-// Function
-
-// function myFunction() {
-//   console.log('Function:::', this);
-// }
-
-// myFunction();
-
 const myObj = {
   myMethod() {
     console.log('Object:::', this);
   },
 };
 
-myObj.myMethod();
+// myObj.myMethod();
 
-
-class MyClass {
-  myMethod() {
-    console.log('Class:::', this);
-  }
+function myFunction(...text: string[]) {
+  console.log('Function:::', this, text);
 }
 
-const myInstance = new MyClass();
-myInstance.myMethod();
+const bindFunction = myFunction.bind(myObj, 'ABC', 'DEF');
+bindFunction('ABC', 'DEF');
+bindFunction('123', '456');
+bindFunction('ABC', 'DEF');
+myFunction.call(myObj, 'ABC', 'DEF');
+myFunction.apply(myObj, ['ABC', 'DEF']);
